@@ -29,7 +29,7 @@ public class XmlParserOptions extends ParserOptions {
 	    "Specifies that the XML parser eliminate whitespace in element content.  Setting this to 'true' will force validating.",
 	    Boolean.FALSE, 6.0f);
     public static final BooleanProperty NAMESPACE_AWARE_DESCRIPTOR = new BooleanProperty("namespaceAware",
-	    "Specifies that the XML parser will provide support for XML namespaces.", Boolean.TRUE, 7.0f);
+	    "Specifies that the XML parser will provide support for XML namespaces.", Boolean.FALSE, 7.0f);
     public static final BooleanProperty VALIDATING_DESCRIPTOR = new BooleanProperty("validating",
 	    "Specifies that the XML parser will validate documents as they are parsed.  This only works for DTDs.",
 	    Boolean.FALSE, 8.0f);
