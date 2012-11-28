@@ -31,6 +31,8 @@ import net.sourceforge.pmd.util.filter.Filters;
 //FUTURE Implement Cloneable and clone()
 public class RuleSet {
 
+    private static final Logger LOG = Logger.getLogger(RuleSet.class.getName());
+
 	private List<Rule> rules = new ArrayList<Rule>();
 	private String fileName;
 	private String name = "";
