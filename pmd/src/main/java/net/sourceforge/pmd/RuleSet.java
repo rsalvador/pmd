@@ -225,8 +225,6 @@ public class RuleSet {
             }
 		}
 	}
-	
-	private static final Logger LOG = Logger.getLogger(RuleSet.class.getName());
 
 	/**
 	 * Does the given Rule apply to the given LanguageVersion?  If so, the
