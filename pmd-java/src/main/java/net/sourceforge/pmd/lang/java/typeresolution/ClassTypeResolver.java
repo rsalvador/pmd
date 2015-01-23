@@ -154,11 +154,15 @@ public class ClassTypeResolver extends JavaParserVisitorAdapter {
 			}
 		} catch (ClassNotFoundException e) {
 		    if (LOG.isLoggable(Level.FINE)) {
-		        LOG.log(Level.FINE, "Could not find class " + className + ", due to: " + e.getClass().getName() + ": " + e.getMessage());
+		        LOG.log(Level.FINE, "Could not find class " + className + ", due to: " + e);
 		    }
+        } catch (NoClassDefFoundError e) {
+            if (LOG.isLoggable(Level.FINE)) {
+                LOG.log(Level.FINE, "Could not find class " + className + ", due to: " + e);
+            }
 		} catch (LinkageError e) {
 		    if (LOG.isLoggable(Level.WARNING)) {
-		        LOG.log(Level.WARNING, "Could not find class " + className + ", due to: " + e.getClass().getName() + ": " + e.getMessage());
+		        LOG.log(Level.WARNING, "Could not find class " + className + ", due to: " + e);
 		    }
 		} finally {
 			populateImports(node);
@@ -651,6 +655,8 @@ public class ClassTypeResolver extends JavaParserVisitorAdapter {
 					myType = pmdClassLoader.loadClass(qualifiedName);
 				} catch (ClassNotFoundException e) {
 					myType = processOnDemand(qualifiedName);
+	            } catch (NoClassDefFoundError e) {
+	                myType = processOnDemand(qualifiedName);
 				} catch (LinkageError e) {
 					myType = processOnDemand(qualifiedName);
 				}
@@ -678,6 +684,8 @@ public class ClassTypeResolver extends JavaParserVisitorAdapter {
 			return true; //Class found
 		} catch (ClassNotFoundException e) {
 			return false;
+	    } catch (NoClassDefFoundError e) {
+	        return false;
 		}
 	}
 

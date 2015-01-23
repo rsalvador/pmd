@@ -63,6 +63,9 @@ public final class PMDASMClassLoader extends ClassLoader {
 	} catch (ClassNotFoundException e) {
 	    dontBother.add(name);
 	    throw e;
+    } catch (NoClassDefFoundError e) {
+        dontBother.add(name);
+        throw e;
 	}
     }
 
